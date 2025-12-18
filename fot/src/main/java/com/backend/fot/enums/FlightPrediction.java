@@ -1,7 +1,6 @@
 package com.backend.fot.enums;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.Arrays;
@@ -54,7 +53,6 @@ public enum FlightPrediction {
      *
      * @return 0 for ON_TIME, 1 for DELAYED
      */
-    @JsonValue
     @Schema(description = "Integer value for ML model (0=ON_TIME, 1=DELAYED)")
     public int getValue() {
         return value;
