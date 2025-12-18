@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -74,6 +76,48 @@ public class GlobalExceptionHandler {
     }
 
     /**
+     * Handles HTTP method not supported errors.
+     * Returns 405 METHOD NOT ALLOWED when using wrong HTTP method.
+     * 
+     * @param ex the method not supported exception
+     * @return error response with supported methods
+     */
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public ResponseEntity<Map<String, Object>> handleMethodNotSupportedException(HttpRequestMethodNotSupportedException ex) {
+        log.warn("Method not supported: {}", ex.getMessage());
+
+        Map<String, Object> errorResponse = new HashMap<>();
+        errorResponse.put("timestamp", Instant.now().toString());
+        errorResponse.put("status", HttpStatus.METHOD_NOT_ALLOWED.value());
+        errorResponse.put("error", "Method Not Allowed");
+        errorResponse.put("message", ex.getMessage());
+        errorResponse.put("supportedMethods", ex.getSupportedHttpMethods());
+
+        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(errorResponse);
+    }
+
+    /**
+     * Handles unsupported media type errors.
+     * Returns 415 UNSUPPORTED MEDIA TYPE when Content-Type is incorrect.
+     * 
+     * @param ex the media type not supported exception
+     * @return error response with supported media types
+     */
+    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+    public ResponseEntity<Map<String, Object>> handleMediaTypeNotSupportedException(HttpMediaTypeNotSupportedException ex) {
+        log.warn("Unsupported media type: {}", ex.getMessage());
+
+        Map<String, Object> errorResponse = new HashMap<>();
+        errorResponse.put("timestamp", Instant.now().toString());
+        errorResponse.put("status", HttpStatus.UNSUPPORTED_MEDIA_TYPE.value());
+        errorResponse.put("error", "Unsupported Media Type");
+        errorResponse.put("message", "Content-Type '" + ex.getContentType() + "' is not supported. Use 'application/json'");
+        errorResponse.put("supportedMediaTypes", ex.getSupportedMediaTypes());
+
+        return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE).body(errorResponse);
+    }
+
+    /**
      * Handles all other unexpected exceptions.
      * Returns 500 INTERNAL SERVER ERROR for unhandled errors.
      * 
@@ -82,13 +126,15 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleGenericException(Exception ex) {
-        log.error("Unexpected error occurred", ex);
+        log.error("Unexpected error occurred: {}", ex.getClass().getName(), ex);
+        log.error("Error message: {}", ex.getMessage());
 
         Map<String, Object> errorResponse = new HashMap<>();
         errorResponse.put("timestamp", Instant.now().toString());
         errorResponse.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
         errorResponse.put("error", "Internal Server Error");
-        errorResponse.put("message", "An unexpected error occurred");
+        errorResponse.put("message", "An unexpected error occurred: " + ex.getMessage());
+        errorResponse.put("exceptionType", ex.getClass().getSimpleName());
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
     }
