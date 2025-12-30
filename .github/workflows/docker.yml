@@ -45,7 +45,7 @@ jobs:
       
       - name: Start Docker Compose services
         run: |
-          docker compose up -d
+          docker compose --profile mock up -d
           echo "Waiting for services to be healthy..."
           sleep 45
           echo "Checking container status..."
