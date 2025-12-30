@@ -1,3 +1,56 @@
-### VS Code ###
+### IDE ###
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
+
+### OS ###
+.DS_Store
+Thumbs.db
+desktop.ini
+
+### Python ###
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+ENV/
+env/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+### Java ###
+target/
+*.class
+*.jar
+*.war
+*.ear
+.settings/
+.project
+.classpath
+
+### Docker ###
+.dockerignore
+
+### Logs ###
+*.log
+logs/
+
+### Environment ###
+.env
+.env.local
+.env.*.local
+
+### Temporary ###
+*.tmp
+*.temp
+.cache/
