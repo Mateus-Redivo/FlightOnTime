@@ -28,13 +28,11 @@ jobs:
           cd mlwrapper
           docker build -t ml-wrapper:test .
       
-      - name: Build ML Service Mock image
-        run: |
-          cd ml-service-mock
-          docker build -t ml-service-mock:test .
+      - name: Pull Python image for ML Service Mock
+        run: docker pull python:3.11-slim
       
       - name: List images
-        run: docker images | grep -E "fot-api|ml-wrapper|ml-service-mock"
+        run: docker images | grep -E "fot-api|ml-wrapper|python"
   
   docker-integration:
     name: Docker Compose Integration Tests
@@ -99,7 +97,7 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "✅ fot-api (Java 17 + Spring Boot)" >> $GITHUB_STEP_SUMMARY
           echo "✅ ml-wrapper (Python 3.11 + Flask)" >> $GITHUB_STEP_SUMMARY
-          echo "✅ ml-service-mock (Python 3.11 + Flask)" >> $GITHUB_STEP_SUMMARY
+          echo "✅ ml-service-mock (Python 3.11 + Flask - no build)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Integration Tests:** All services healthy" >> $GITHUB_STEP_SUMMARY
           echo "**API Endpoint:** Tested successfully" >> $GITHUB_STEP_SUMMARY
