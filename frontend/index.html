@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FYI - For Your Information</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-info">
+            <h1>FYI - For You Information <i class="fa-solid fa-plane-departure"></i></h1>
+            <p>Predição de atraso de voos</p>
+        </div>
+        <div class="header-user">
+            <a href="ajuda.html" style="color: white; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+        <i class="fa-regular fa-circle-question"></i> Ajuda
+    </a>
+        </div>
+    </header>
+
+    <aside class="reveal delay-1">
+        <nav>
+            <a href="index.html" class="nav-item active"><i class="fa-solid fa-house"></i> Home / Consulta</a>
+            <a href="#" class="nav-item"><i class="fa-solid fa-clock-rotate-left"></i> Histórico</a>
+            <a href="estatitica.html" class="nav-item"><i class="fa-solid fa-chart-line"></i> Estatísticas</a>
+            <a href="modelo.html" class="nav-item"><i class="fa-solid fa-circle-info"></i> Sobre o Modelo</a>
+        </nav>
+    </aside>
+
+    <main>
+        <section class="welcome-block reveal delay-2">
+            <h2>Bem-vindo ao Painel de Análise</h2>
+            <p>Informe os dados do voo abaixo para obter a probabilidade estatística de atraso.</p>
+        </section>
+
+        <section class="card reveal delay-3">
+            <form id="predict-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Número do Voo</label>
+                        <input type="text" name="flightNumber" placeholder="Ex: LA4001" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Companhia Aérea</label>
+                        <select name="companyName" required>
+                            <option value="">Selecione...</option>
+                            <option value="LA">LATAM</option>
+                            <option value="AD">Azul</option>
+                            <option value="G3">Gol</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Aeroporto de Origem</label>
+                        <input type="text" name="flightOrigin" placeholder="Ex: GRU" maxlength="3" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Aeroporto de Destino</label>
+                        <input type="text" name="flightDestination" placeholder="Ex: GIG" maxlength="3" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Data do Voo</label>
+                        <input type="date" name="flightDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Horário Previsto</label>
+                        <input type="time" name="flightTime" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Distância (km)</label>
+                        <input type="number" name="flightDistance" placeholder="Ex: 358" min="1" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-predict">Analisar Probabilidade</button>
+            </form>
+        </section>
+
+        <section id="result-card" class="card">
+            <div class="result-container">
+                <div class="gauge-wrapper">
+                    <div class="gauge">
+                        <div class="gauge__body">
+                            <div class="gauge__fill" id="gauge-fill"></div>
+                            <div class="gauge__cover" id="gauge-text">0%</div>
+                        </div>
+                    </div>
+                    <div class="gauge-labels">
+                        <span>Baixo Risco</span>
+                        <span>Alto Risco</span>
+                    </div>
+                </div>
+
+                <div class="result-details">
+                    <h3 id="result-status">Analisando...</h3>
+                    <p id="result-description">Aguardando processamento dos dados informados.</p>
+                    <div class="metrics-mini">
+                        <span><i class="fa-solid fa-microchip"></i> Modelo: Random Forest v2.1</span>
+                        <span><i class="fa-solid fa-shield-check"></i> Confiança: 94%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Los Hermanos - Inteligência de Dados Aeronáuticos</p>
+            <p>Aviso: As previsões são estatísticas e não constituem garantia de horário.</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

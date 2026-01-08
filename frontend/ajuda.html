@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlyPredict | Central de Ajuda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-info">
+            <h1>FYI - For Your Information <i class="fa-solid fa-plane-departure"></i></h1>
+            <p>Central de Conhecimento e Ajuda</p>
+        </div>
+        <div class="header-user">
+            <a href="index.html" style="color: white; text-decoration: none; display: flex; align-items: center; gap: 8px; font-weight: bold;">
+                <i class="fa-solid fa-house"></i> Voltar à Consulta
+            </a>
+        </div>
+    </header>
+
+    <aside class="reveal delay-1">
+        <nav>
+            <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i> Home / Consulta</a>
+            <a href="#" class="nav-item"><i class="fa-solid fa-clock-rotate-left"></i> Histórico</a>
+            <a href="estatitica.html" class="nav-item"><i class="fa-solid fa-chart-line"></i> Estatísticas</a>
+            <a href="modelo.html" class="nav-item"><i class="fa-solid fa-circle-info"></i> Sobre o Modelo</a>
+        </nav>
+    </aside>
+
+    <main>
+        <section class="welcome-block reveal delay-2">
+            <h2 class="main-title">Central de Ajuda e Documentação</h2>
+            <p>Entenda a ciência e a tecnologia por trás das nossas previsões de voo.</p>
+        </section>
+
+        <article class="card reveal delay-3">
+            <h2><i class="fa-solid fa-chart-simple"></i> 1. O que é Estatística e Padrões?</h2>
+            <p>A base do FlyPredict é a identificação de regularidades. Analisamos milhões de dados para encontrar comportamentos que se repetem ao longo do tempo.</p>
+            
+            <div class="doc-grid">
+                <div class="doc-item">
+                    <h4>A Tríade</h4>
+                    <p>Dados &rarr; Padrões &rarr; Modelos = Previsões</p>
+                </div>
+                <div class="doc-item">
+                    <h4>Sazonalidade</h4>
+                    <p>Identificamos como o clima e datas festivas influenciam os atrasos de forma cíclica.</p>
+                </div>
+            </div>
+        </article>
+
+        <article class="card reveal delay-3">
+            <h2><i class="fa-solid fa-microchip"></i> 2. Como funciona o Machine Learning?</h2>
+            <p>O Machine Learning (Aprendizado de Máquina) permite que o sistema aprenda com o passado sem ser explicitamente programado para cada situação.</p>
+            
+            <div class="doc-subsection">
+                <h3>O Treinamento do Modelo</h3>
+                <p>Nosso modelo passa por um processo rigoroso de ETL e treinamento:</p>
+                <div class="etl-steps">
+                    <div class="etl-box">
+                        <span class="badge">Passo 1</span>
+                        <h4>Coleta (Extract)</h4>
+                        <p>Dados de meteorologia e tráfego aéreo.</p>
+                    </div>
+                    <div class="etl-box">
+                        <span class="badge">Passo 2</span>
+                        <h4>Treino</h4>
+                        <p>O algoritmo Random Forest estuda correlações.</p>
+                    </div>
+                    <div class="etl-box">
+                        <span class="badge">Passo 3</span>
+                        <h4>Validação</h4>
+                        <p>Testamos o modelo com dados que ele nunca viu antes.</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="card reveal delay-3">
+            <h2><i class="fa-solid fa-wand-magic-sparkles"></i> 3. Predição de Atrasos na Prática</h2>
+            <p>Quando você insere os dados de um voo, o modelo calcula a probabilidade baseando-se em:</p>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <i class="fa-solid fa-cloud-sun"></i>
+                    <h4>Clima</h4>
+                    <p>Impacto de chuvas e ventos.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <h4>Histórico</h4>
+                    <p>Performance da rota nos últimos meses.</p>
+                </div>
+            </div>
+        </article>
+
+        <div class="info-alert reveal delay-3">
+            <i class="fa-solid fa-circle-info"></i>
+            <span><strong>Nota:</strong> As previsões são probabilidades estatísticas e ajudam na tomada de decisão, mas não substituem os anúncios oficiais das companhias.</span>
+        </div>
+
+        <article class="card reveal delay-3">
+            <h2><i class="fa-solid fa-envelope"></i> Contato com o Desenvolvimento</h2>
+            <p>Dúvidas técnicas, sugestões de melhoria ou feedback sobre o modelo? Nossa equipe está à disposição.</p>
+            
+            <div class="doc-grid" style="margin-top: 20px;">
+                <div class="doc-item" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <i class="fa-solid fa-at" style="font-size: 2rem; color: var(--primary-blue); margin-bottom: 10px;"></i>
+                    <h4>E-mail</h4>
+                    <p>Email de contato FYI</p>
+                    <a href="email@fyi.com" class="nav-item" style="color: var(--primary-blue); border: 1px solid var(--primary-blue); padding: 5px 15px; border-radius: 4px; margin-top: 10px; font-size: 0.9rem;" target="_blank">Enviar Mensagem</a>
+                </div>
+
+                <div class="doc-item" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <i class="fa-brands fa-github" style="font-size: 2rem; color: var(--text-dark); margin-bottom: 10px;"></i>
+                    <h4>Repositório</h4>
+                    <p>Documentação e Código-fonte</p>
+                    <a href="https://github.com/Mateus-Redivo/FlightOnTime" class="nav-item" style="color: var(--text-dark); border: 1px solid var(--text-dark); padding: 5px 15px; border-radius: 4px; margin-top: 10px; font-size: 0.9rem;" target="_blank">Ver no GitHub</a>
+                </div>
+
+                <div class="doc-item" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <i class="fa-solid fa-users-gear" style="font-size: 2rem; color: var(--primary-blue); margin-bottom: 10px;"></i>
+                    <h4>Equipe</h4>
+                    <p>Los Hermanos Dev Team</p>
+                    <span style="font-size: 0.8rem; color: #777; margin-top: 10px;">Tempo de resposta: até 24h</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="card reveal delay-3">
+            <h2><i class="fa-solid fa-code"></i> Funcionamento do Script (Lógica de Front-end)</h2>
+            <p>O arquivo <code>script.js</code> gerencia a interatividade da página sem a necessidade de recarregamento. Ele atua em três frentes principais:</p>
+            
+            <div class="doc-grid">
+                <div class="doc-item">
+                    <h4>1. Interceptação do Formulário</h4>
+                    <p>O script impede o envio padrão do formulário (<code>e.preventDefault()</code>), permitindo que o processamento ocorra localmente com uma animação de carregamento no botão.</p>
+                </div>
+                <div class="doc-item">
+                    <h4>2. Simulação e Gauge</h4>
+                    <p>Ele gera um valor probabilístico e calcula a rotação do medidor (velocímetro) usando a unidade <code>turn</code> do CSS para transformar porcentagem em movimento visual.</p>
+                </div>
+                <div class="doc-item">
+                    <h4>3. Gatilhos de Animação</h4>
+                    <p>Ao carregar a página, o script detecta elementos com a classe <code>.reveal</code> e adiciona a classe <code>active</code>, disparando as transições suaves de entrada.</p>
+                </div>
+            </div>
+        </article>
+
+        <footer>
+            <p>&copy; 2026 Los Hermanos - Inteligência de Dados Aeronáuticos</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
