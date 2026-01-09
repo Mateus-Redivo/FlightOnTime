@@ -76,11 +76,13 @@ php -S localhost:3000
 ## 🔄 Integração com API
 
 O frontend consome o endpoint:
-```
+
+```text
 POST /api/v1/predict
 ```
 
 **Request:**
+
 ```json
 {
   "flightNumber": "LA4001",
@@ -93,6 +95,7 @@ POST /api/v1/predict
 ```
 
 **Response:**
+
 ```json
 {
   "prediction": "DELAYED",
@@ -106,7 +109,7 @@ POST /api/v1/predict
 
 ## 🎨 Estrutura de Arquivos
 
-```
+```text
 frontend/
 ├── index.html          # Página principal
 ├── ajuda.html          # Página de ajuda
@@ -120,6 +123,7 @@ frontend/
 ## 🐛 Troubleshooting
 
 ### Erro de CORS
+
 Se estiver rodando o frontend localmente (fora do Docker), você pode ter problemas de CORS. Soluções:
 
 1. **Use o Docker** (recomendado) - o nginx já está configurado como proxy
@@ -127,12 +131,15 @@ Se estiver rodando o frontend localmente (fora do Docker), você pode ter proble
 3. Use uma extensão de navegador para desabilitar CORS (apenas desenvolvimento)
 
 ### API não responde
+
 Verifique se os containers estão rodando:
+
 ```bash
 docker compose ps
 ```
 
 Verifique logs:
+
 ```bash
 docker compose logs fot-api
 docker compose logs frontend
