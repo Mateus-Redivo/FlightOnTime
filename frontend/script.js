@@ -13,7 +13,6 @@ console.log('Ambiente:', isDevelopment ? 'Live Server' : (isDocker ? 'Docker' : 
 console.log('API URL:', API_URL);
 
 const predictForm = document.getElementById('predict-form');
-
 // Verificamos se o formulário existe na página atual antes de adicionar o listener
 if (predictForm) {
     predictForm.addEventListener('submit', async function(e) {
@@ -113,7 +112,8 @@ if (predictForm) {
                     statusDesc.innerText = `${data.summary} - Probabilidade elevada de atraso detectada. Fatores como congestionamento aéreo ou histórico da rota influenciam este resultado.`;
                 }
             }
- detalhado
+
+        } catch (error) {
             let errorMessage = 'Erro ao processar a predição. ';
             
             if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
@@ -124,15 +124,12 @@ if (predictForm) {
                 errorMessage += '\n\n' + error.message;
             }
             
-            alert(errorMessage
+            alert(errorMessage);
             console.error('Erro ao fazer a predição:', error);
             
             // Restaurar botão
             btn.innerText = "Analisar Probabilidade";
             btn.disabled = false;
-            
-            // Mostrar erro
-            alert('Erro ao processar a predição. Por favor, tente novamente.');
         }
     });
 }
