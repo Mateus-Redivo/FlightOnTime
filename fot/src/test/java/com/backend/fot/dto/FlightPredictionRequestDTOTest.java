@@ -145,7 +145,7 @@ class FlightPredictionRequestDTOTest {
         }
 
         @ParameterizedTest
-        @ValueSource(strings = {"AA", "1234" , "A123", "AAAA1234", "aa1234", "AA12345"})
+        @ValueSource(strings = {"AA", "1234" , "A123", "A-1234", "AAAA1234", "aa1234", "AA12345"})
         @DisplayName("Should reject invalid flight number format")
         void shouldRejectInvalidFlightNumberFormat(String flightNumber) {
             // Arrange
